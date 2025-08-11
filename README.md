@@ -19,4 +19,4 @@ This assignment is designed to be a hands-on project for students to learn about
 
 ## Usage
 
-To use this assignment, instructors can clone this repository and distribute the materials in the `/Shuvam-Menopause-Education` directory to their students. The `index.html` file provides a starting point for students to understand the assignment and access the materials.
+To use this assignment, instructors can clone this repository and distribute the materials in the `/Menopause-Education` directory to their students. The `index.html` file provides a starting point for students to understand the assignment and access the materials.
