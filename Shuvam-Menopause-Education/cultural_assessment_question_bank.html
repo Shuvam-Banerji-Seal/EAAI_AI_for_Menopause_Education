@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Assessment Question Bank - Menopause Education AI</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .question-category {
+            background: white;
+            margin: 25px 0;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+        }
+        
+        .category-title {
+            color: #667eea;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .question-group {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border: 1px solid #e3e8ff;
+        }
+        
+        .question {
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #2d3748;
+        }
+        
+        .option {
+            margin: 8px 0;
+            padding: 8px 12px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .pathway-indicator {
+            font-size: 0.85em;
+            font-style: italic;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .liberation { border-left: 3px solid #48bb78; }
+        .loss { border-left: 3px solid #f56565; }
+        .neutral { border-left: 3px solid #ed8936; }
+        
+        .instructions {
+            background: #e6fffa;
+            border: 1px solid #81e6d9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .note {
+            background: #fff5f5;
+            border: 1px solid #feb2b2;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cultural Assessment Question Bank</h1>
+        <p>AI-Powered Menopause Education System</p>
+        <p><em>Culturally-Sensitive Pathway Determination</em></p>
+    </div>
+
+    <div class="instructions">
+        <h3>Instructions for Implementation</h3>
+        <p><strong>Purpose:</strong> This question bank helps determine the appropriate cultural pathway (Liberation, Loss, or Neutral) for personalized menopause education.</p>
+        <p><strong>Scoring:</strong> Each response is coded to suggest pathway preference. The AI system should use weighted scoring rather than rigid categorization.</p>
+        <p><strong>Cultural Sensitivity:</strong> Questions are designed to respect diverse perspectives while gathering necessary information for personalization.</p>
+    </div>
+
+    <div class="question-category">
+        <h2 class="category-title">1. Life Transition Perspectives</h2>
+        
+        <div class="question-group">
+            <div class="question">How do you generally view major life transitions?</div>
+            <div class="option liberation">As opportunities for growth and new beginnings</div>
+            <div class="option neutral">As natural parts of life that require adaptation</div>
+            <div class="option loss">As challenging periods that often involve loss</div>
+            <div class="option neutral">I prefer not to think about them until they happen</div>
+        </div>
+
+        <div class="question-group">
+            <div class="question">When you think about aging, what comes to mind first?</div>
+            <div class="option liberation">Wisdom, respect, and freedom from earlier life burdens</div>
+            <div class="option neutral">A mix of challenges and opportunities</div>
+            <div class="option loss">Physical decline and loss of youth</div>
+            <div class="option neutral">I try not to focus on aging</div>
+        </div>
+
+        <div class="question-group">
+            <div class="question">How important is maintaining a youthful appearance to you?</div>
+            <div class="option loss">Extremely important - it affects how I feel about myself</div>
+            <div class="option neutral">Somewhat important, but not my main focus</div>
+            <div class="option liberation">Not very important - I value other qualities more</div>
+            <div class="option liberation">I embrace the natural aging process</div>
+        </div>
+    </div>
+
+    <div class="question-category">
+        <h2 class="category-title">2. Menstruation and Reproductive Health Views</h2>
+        
+        <div class="question-group">
+            <div class="question">How has menstruation impacted your life overall?</div>
+            <div class="option liberation">It has been a burden I would be happy to be free from</div>
+            <div class="option neutral">It's been a normal part of life with some inconveniences</div>
+            <div class="option loss">It's an important part of being a woman</div>
+            <div class="option neutral">I haven't thought much about its overall impact</div>
+        </div>
+
+        <div class="question-group">
+            <div class="question">In your cultural context, how are menstruating women typically treated?</div>
+            <div class="option liberation">There are restrictions or taboos that limit activities</div>
+            <div class="option neutral">There are some cultural considerations but not major restrictions</div>
+            <div class="option neutral">It's treated as a completely normal bodily function</div>
+            <div class="option loss">It's celebrated as a sign of fertility and womanhood</div>
+        </div>
+
+        <div class="question-group">
+            <div class="question">How do you feel about the end of fertility?</div>
+            <div class="option loss">Deeply saddened - it represents a significant loss</div>
+            <div class="option neutral">Somewhat sad, but I understand it's natural</div>
+            <div class="option neutral">Neutral - fertility was just one aspect of my life</div>
+            <div class="option liberation">Relieved - I no longer need to worry about pregnancy</div>
+        </div>
+    </div>
+
+    <div class="question-category">
+        <h2 class="category-title">3. Social and Family Context</h2>
+        
+        <div class="question-group">
+            <div class="question">In your family/community, how are older women typically viewed?</div>
+            <div class="option liberation">As respected elders and wise advisors</div>
+            <div class="option neutral">With general respect as family members</div>
+            <div class="option loss">As less relevant or influential than younger women</div>
+            <div class="option neutral">Views vary depending on the individual woman</div>
+        </div>
+
+        <div class="question-group">
+            <div class="question">Who would you most likely talk to about menopause concerns?</div>
+            <div class="option neutral">Healthcare provider or doctor</div>
+            <div class="option liberation">Older female family members or community elders</div>
+            <div class="option neutral">Close friends of similar age</div>
+            <div class="option loss">I would prefer to handle it privately</div>
+        </div>
+
+        <div class="question-group">
+            <div class="question">How comfortable is your family/community with discussing women's health topics?</div>
+            <div class="option neutral">Very open - these topics are discussed freely</div>
+            <div class="option neutral">Somewhat open - can be discussed in appropriate settings</div>
+            <div class="option liberation">Limited discussion - mostly among women only</div>
+            <div class="option loss">Very uncomfortable - these topics are rarely discussed</div>
+        </div>
+    </div>
+
+    <div class="question-category">
+        <h2 class="category-title">4. Religious and Spiritual Beliefs</h2>
+        
+        <div class="question-group">
+            <div class="question">How do your spiritual/religious beliefs influence your view of natural body changes?</div>
+            <div class="option liberation">They help me see changes as part of a divine plan or natural order</div>
+            <div class="option neutral">They provide some comfort but don't strongly influence my views</div>
+            <div class="option neutral">They don't significantly impact how I view body changes</div>
+            <div class="option loss">They sometimes make me question why these changes occur</div>
+        </div>
+
+        <div class="question-group">
+            <div class="question">In your spiritual/religious tradition, what is the role of post-menopausal women?</div>
+            <div class="option liberation">They often have elevated status and special roles</div>
+            <div class="option neutral">They are valued equally as community members</div>
+            <div class="option neutral">There aren't specific roles related to menopausal status</div>
+            <div class="option loss">Their role may be diminished compared to younger women</div>
+        </div>
+    </div>
+
+    <div class="question-category">
+        <h2 class="category-title">5. Health and Wellness Approach</h2>
+        
+        <div class="question-group">
+            <div class="question">How do you prefer to approach health challenges?</div>
+            <div class="option neutral">Seeking medical treatment and following professional advice</div>
+            <div class="option liberation">Using traditional remedies and natural approaches</div>
+            <div class="option neutral">Combining modern medicine with traditional practices</div>
+            <div class="option loss">I often worry and seek multiple opinions</div>
+        </div>
+
+        <div class="question-group">
+            <div class="question">What's your primary concern about menopause?</div>
+            <div class="option loss">Physical symptoms and their impact on daily life</div>
+            <div class="option loss">Changes in appearance and attractiveness</div>
+            <div class="option neutral">Long-term health implications</div>
+            <div class="option liberation">I'm not particularly concerned - it's a natural process</div>
+        </div>
+
+        <div class="question-group">
+            <div class="question">How do you define successful aging?</div>
+            <div class="option liberation">Gaining wisdom, respect, and spiritual growth</div>
+            <div class="option neutral">Maintaining health and independence</div>
+            <div class="option loss">Preserving youth and vitality as much as possible</div>
+            <div class="option neutral">Adapting gracefully to each life stage</div>
+        </div>
+    </div>
+
+    <div class="question-category">
+        <h2 class="category-title">6. Socioeconomic and Educational Context</h2>
+        
+        <div class="question-group">
+            <div class="question">What is your highest level of formal education?</div>
+            <div class="option neutral">Graduate degree or higher</div>
+            <div class="option neutral">Bachelor's degree</div>
+            <div class="option neutral">High school or equivalent</div>
+            <div class="option liberation">Primary education or less</div>
+        </div>
+
+        <div class="question-group">
+            <div class="question">How would you describe your living environment?</div>
+            <div class="option neutral">Urban area with good healthcare access</div>
+            <div class="option neutral">Suburban area with moderate healthcare access</div>
+            <div class="option liberation">Rural area with limited healthcare access</div>
+            <div class="option liberation">Traditional community with strong cultural practices</div>
+        </div>
+
+        <div class="question-group">
+            <div class="question">How comfortable are you with using technology for health information?</div>
+            <div class="option neutral">Very comfortable - I regularly use health apps and websites</div>
+            <div class="option neutral">Somewhat comfortable - I occasionally seek health info online</div>
+            <div class="option liberation">Limited comfort - I prefer traditional information sources</div>
+            <div class="option neutral">Not comfortable - I prefer face-to-face communication</div>
+        </div>
+    </div>
+
+    <div class="question-category">
+        <h2 class="category-title">7. Communication Preferences</h2>
+        
+        <div class="question-group">
+            <div class="question">What language do you feel most comfortable using for health discussions?</div>
+            <div class="option neutral">English</div>
+            <div class="option liberation">My native/regional language</div>
+            <div class="option neutral">I'm equally comfortable with multiple languages</div>
+            <div class="option neutral">Simple language regardless of the specific language</div>
+        </div>
+
+        <div class="question-group">
+            <div class="question">How much detail do you prefer when learning about health topics?</div>
+            <div class="option neutral">Comprehensive medical details and research</div>
+            <div class="option neutral">Moderate detail with practical applications</div>
+            <div class="option liberation">Simple explanations with traditional wisdom</div>
+            <div class="option loss">Just enough to address my immediate concerns</div>
+        </div>
+
+        <div class="question-group">
+            <div class="question">When seeking health information, you prefer sources that:</div>
+            <div class="option neutral">Provide scientific evidence and medical research</div>
+            <div class="option liberation">Include cultural wisdom and traditional knowledge</div>
+            <div class="option neutral">Offer practical tips from other women's experiences</div>
+            <div class="option loss">Focus on solutions to specific problems</div>
+        </div>
+    </div>
+
+    <div class="note">
+        <h3>Implementation Notes:</h3>
+        <ul>
+            <li><strong>Scoring System:</strong> Liberation-oriented responses suggest positive menopause framing; Loss-oriented responses suggest medical/symptomatic focus; Neutral responses indicate balanced approach needed.</li>
+            <li><strong>Cultural Sensitivity:</strong> Questions avoid direct cultural stereotyping while gathering necessary pathway information.</li>
+            <li><strong>Adaptive Questioning:</strong> AI system should adjust question sequence based on initial responses to avoid redundancy.</li>
+            <li><strong>Privacy:</strong> All responses should be anonymized and encrypted according to the privacy framework outlined in the research paper.</li>
+            <li><strong>Continuous Learning:</strong> User feedback should inform question bank refinement and cultural adaptation.</li>
+        </ul>
+    </div>
+
+    <div class="question-category">
+        <h2 class="category-title">Pathway Determination Algorithm</h2>
+        <div style="background: #f7fafc; padding: 20px; border-radius: 8px; margin-top: 15px;">
+            <h3>Scoring Guidelines:</h3>
+            <p><strong>Liberation Pathway (Score ≥ 70%):</strong> User views menopause as freedom, values traditional wisdom, comes from cultures with elder respect, limited healthcare access.</p>
+            
+            <p><strong>Loss Pathway (Score ≥ 70%):</strong> User focuses on symptom management, concerns about physical changes, values medical intervention, Western cultural influence.</p>
+            
+            <p><strong>Neutral Pathway (Mixed Scores):</strong> Balanced perspectives, uncertain responses, or mixed cultural influences requiring comprehensive approach.</p>
+            
+            <p><strong>Dynamic Adaptation:</strong> Pathway can be adjusted based on ongoing interaction patterns and user feedback.</p>
+        </div>
+    </div>
+
+</body>
+</html>
