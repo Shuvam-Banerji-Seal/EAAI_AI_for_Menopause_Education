@@ -5,7 +5,7 @@ This repository contains the materials for a model AI assignment for the EAAI (S
 
 ## Repository Structure
 
-- **`/Shuvam-Menopause-Education`**: This directory contains all the materials for the assignment, as per the EAAI submission guidelines.
+- **`/Menopause-Education`**: This directory contains all the materials for the assignment, as per the EAAI submission guidelines.
   - `index.html`: A summary of the assignment and links to the materials.
   - `menopause.html`: An informational page about menopause.
   - `cultural_assessment_question_bank.html`: A question bank for cultural assessment.
