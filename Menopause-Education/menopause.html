@@ -85,6 +85,57 @@
             margin: 15px 0;
             font-family: 'Courier New', monospace;
         }
+        .collapsible-code {
+            background: #2d3748;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #4a5568;
+        }
+        .code-header {
+            background: #4a5568;
+            color: #e2e8f0;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 8px 8px 0 0;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        .code-header:hover {
+            background: #2d3748;
+        }
+        .code-toggle {
+            font-size: 18px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        .code-content {
+            display: none;
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 0 0 8px 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        .code-content.expanded {
+            display: block;
+        }
+        .code-toggle.expanded {
+            transform: rotate(90deg);
+        }
+        .code-preview {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px 20px;
+            font-family: 'Courier New', monospace;
+            border-radius: 0 0 8px 8px;
+            border-top: 1px solid #4a5568;
+            font-size: 14px;
+            opacity: 0.8;
+        }
         .mermaid {
             text-align: center;
             margin: 20px 0;
@@ -143,7 +194,7 @@
             margin: 15px 0;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.9.0/dist/mermaid.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -203,7 +254,6 @@
 
         <h2>System Architecture</h2>
         <div class="mermaid">
-            <pre class="mermaid">
 graph TB
     A[User Input] --> B[Cultural Assessment Module]
     B --> C{Cultural Perspective}
@@ -236,8 +286,6 @@ graph TB
     S[Cultural Context DB] --> B
     T[Medical Literature] --> R
     U[Local Cultural Data] --> S
-
-            </pre>
         </div>
 
         <div class="phase">
@@ -331,8 +379,21 @@ graph TB
         <h3>Technical Architecture Components</h3>
 
         <h4>Component 1: Cultural Assessment Module</h4>
-        <div class="code-block">
-# Cultural Assessment Questions Framework
+        <div class="collapsible-code">
+            <div class="code-header" onclick="toggleCode('code1')">
+                <span>Cultural Assessment Questions Framework</span>
+                <span class="code-toggle" id="toggle1">▶</span>
+            </div>
+            <div class="code-preview">
+                # Cultural Assessment Questions Framework<br>
+                cultural_assessment = {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"perspective_questions": [ ... ]<br>
+                }<br>
+                <br>
+                def assess_cultural_perspective(responses): ...
+            </div>
+            <div class="code-content" id="code1">
+<pre><code class="language-python"># Cultural Assessment Questions Framework
 cultural_assessment = {
     "perspective_questions": [
         {
@@ -353,14 +414,66 @@ cultural_assessment = {
                 "balanced": "General information about what to expect"
             }
         },
-        # Add more questions...
-    ]
+        {
+            "id": "cultural_background",
+            "question": "Which cultural context best describes your background?",
+            "options": {
+                "traditional": "Traditional/rural community values",
+                "urban_modern": "Urban/modern lifestyle",
+                "mixed": "Mix of traditional and modern influences"
+            }
+        },
+        {
+            "id": "support_preference",
+            "question": "What kind of support do you prefer when learning about health topics?",
+            "options": {
+                "community": "Community and family guidance",
+                "medical": "Professional medical advice",
+                "self_directed": "Independent research and learning"
+            }
+        }
+    ],
+    "scoring_weights": {
+        "liberation_indicators": ["liberation", "empowerment", "traditional", "community"],
+        "medical_indicators": ["medical", "medical", "urban_modern", "medical"],
+        "neutral_indicators": ["neutral", "balanced", "mixed", "self_directed"]
+    }
 }
+
+def assess_cultural_perspective(responses):
+    """
+    Analyze user responses to determine cultural pathway
+    Returns: 'liberation', 'medical', or 'neutral'
+    """
+    scores = {"liberation": 0, "medical": 0, "neutral": 0}
+    
+    for question_id, response in responses.items():
+        for pathway, indicators in cultural_assessment["scoring_weights"].items():
+            pathway_name = pathway.replace("_indicators", "")
+            if response in indicators:
+                scores[pathway_name] += 1
+    
+    return max(scores, key=scores.get)
+</code></pre>
+            </div>
         </div>
 
         <h4>Component 2: Content Pathways Implementation</h4>
-        <div class="code-block">
-class ContentRouter:
+        <div class="collapsible-code">
+            <div class="code-header" onclick="toggleCode('code2')">
+                <span>Content Router and Pathway Classes</span>
+                <span class="code-toggle" id="toggle2">▶</span>
+            </div>
+            <div class="code-preview">
+                class ContentRouter:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def route_user(self, assessment_results): ...<br>
+                <br>
+                class LiberationPathway: ...<br>
+                class MedicalPathway: ...<br>
+                class NeutralPathway: ...
+            </div>
+            <div class="code-content" id="code2">
+<pre><code class="language-python">class ContentRouter:
     def __init__(self):
         self.pathways = {
             "liberation": LiberationPathway(),
@@ -374,13 +487,112 @@ class ContentRouter:
         return self.pathways[score["dominant_pathway"]]
     
     def calculate_pathway_score(self, results):
-        # Implementation for scoring cultural perspective
-        pass
+        """Calculate which pathway best matches user's cultural perspective"""
+        pathway_scores = {
+            "liberation": 0,
+            "medical": 0,
+            "neutral": 0
+        }
+        
+        # Score based on response patterns
+        for response in results:
+            if response in ["liberation", "empowerment", "traditional"]:
+                pathway_scores["liberation"] += 1
+            elif response in ["medical", "treatment", "professional"]:
+                pathway_scores["medical"] += 1
+            else:
+                pathway_scores["neutral"] += 1
+        
+        dominant_pathway = max(pathway_scores, key=pathway_scores.get)
+        confidence = pathway_scores[dominant_pathway] / sum(pathway_scores.values())
+        
+        return {
+            "dominant_pathway": dominant_pathway,
+            "confidence": confidence,
+            "all_scores": pathway_scores
+        }
+
+class LiberationPathway:
+    """Content pathway for users viewing menopause as positive liberation"""
+    
+    def get_content_framework(self):
+        return {
+            "focus": "empowerment_and_wisdom",
+            "tone": "celebratory_and_supportive",
+            "key_themes": [
+                "Freedom from menstrual restrictions",
+                "Elevation to respected elder status",
+                "Wisdom and life experience",
+                "New opportunities and perspectives"
+            ],
+            "content_types": [
+                "success_stories",
+                "cultural_celebrations",
+                "wellness_optimization",
+                "community_building"
+            ]
+        }
+
+class MedicalPathway:
+    """Content pathway for users viewing menopause as medical challenge"""
+    
+    def get_content_framework(self):
+        return {
+            "focus": "symptom_management_and_treatment",
+            "tone": "supportive_and_informative",
+            "key_themes": [
+                "Symptom recognition and management",
+                "Treatment options and effectiveness",
+                "Healthcare navigation",
+                "Quality of life preservation"
+            ],
+            "content_types": [
+                "medical_information",
+                "treatment_guides",
+                "symptom_trackers",
+                "healthcare_resources"
+            ]
+        }
+
+class NeutralPathway:
+    """Balanced content pathway for users without strong cultural framing"""
+    
+    def get_content_framework(self):
+        return {
+            "focus": "balanced_information_and_choice",
+            "tone": "informative_and_respectful",
+            "key_themes": [
+                "Comprehensive menopause information",
+                "Multiple perspectives and approaches",
+                "Personal choice and autonomy",
+                "Cultural sensitivity awareness"
+            ],
+            "content_types": [
+                "educational_materials",
+                "decision_support_tools",
+                "cultural_perspectives",
+                "personalized_guidance"
+            ]
+        }
+</code></pre>
+            </div>
         </div>
 
         <h4>Component 3: Safety Validation Layer</h4>
-        <div class="code-block">
-class SafetyValidator:
+        <div class="collapsible-code">
+            <div class="code-header" onclick="toggleCode('code3')">
+                <span>Safety Validator Class</span>
+                <span class="code-toggle" id="toggle3">▶</span>
+            </div>
+            <div class="code-preview">
+                class SafetyValidator:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def validate_response(self, response, user_context): ...<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def verify_medical_accuracy(self, response): ...<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def assess_confidence(self, response): ...<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def get_safety_flags(self, response): ...
+            </div>
+            <div class="code-content" id="code3">
+<pre><code class="language-python">class SafetyValidator:
     def __init__(self):
         self.medical_keywords = self.load_medical_keywords()
         self.safety_thresholds = {
@@ -388,30 +600,131 @@ class SafetyValidator:
             "medical_accuracy": 0.95,
             "cultural_sensitivity": 0.9
         }
+        self.restricted_topics = [
+            "specific_medical_diagnosis",
+            "medication_recommendations",
+            "emergency_medical_situations"
+        ]
     
     def validate_response(self, response, user_context):
         """Multi-layer safety validation"""
         medical_check = self.verify_medical_accuracy(response)
         bias_check = self.detect_cultural_bias(response, user_context)
         confidence_check = self.assess_confidence(response)
+        content_check = self.validate_content_appropriateness(response)
         
         return {
-            "approved": all([medical_check, bias_check, confidence_check]),
-            "requires_human_review": not medical_check,
-            "escalate_to_expert": confidence_check < self.safety_thresholds["confidence_min"]
+            "approved": all([medical_check, bias_check, confidence_check, content_check]),
+            "requires_human_review": not medical_check or not content_check,
+            "escalate_to_expert": confidence_check < self.safety_thresholds["confidence_min"],
+            "safety_flags": self.get_safety_flags(response),
+            "recommendations": self.get_improvement_recommendations(response)
         }
+    
+    def verify_medical_accuracy(self, response):
+        """Validate medical information against established sources"""
+        # Check against medical fact database
+        # Verify claims don't contradict established medical knowledge
+        # Flag any absolute medical statements without proper caveats
+        medical_claims = self.extract_medical_claims(response)
+        
+        for claim in medical_claims:
+            if not self.verify_against_medical_database(claim):
+                return False
+        return True
+    
+    def validate_content_appropriateness(self, response):
+        """Ensure content doesn't venture into restricted medical territory"""
+        for topic in self.restricted_topics:
+            if self.contains_restricted_content(response, topic):
+                return False
+        return True
+    
+    def load_medical_keywords(self):
+        """Load validated medical terminology and fact database"""
+        return {
+            "symptoms": ["hot_flashes", "night_sweats", "mood_changes", "sleep_disruption"],
+            "treatments": ["hormone_therapy", "lifestyle_changes", "alternative_treatments"],
+            "safety_phrases": ["consult_healthcare_provider", "individual_results_vary", "not_medical_advice"]
+        }
+    
+    def assess_confidence(self, response):
+        """Assess AI confidence level in response"""
+        uncertainty_indicators = ["might", "could", "possibly", "sometimes", "may vary"]
+        certainty_indicators = ["will", "always", "never", "definitely", "guaranteed"]
+        
+        uncertainty_count = sum(1 for indicator in uncertainty_indicators if indicator in response.lower())
+        certainty_count = sum(1 for indicator in certainty_indicators if indicator in response.lower())
+        
+        # Higher uncertainty_count relative to certainty_count = higher confidence in safety
+        if certainty_count > uncertainty_count:
+            return 0.6  # Low confidence due to overconfident language
+        else:
+            return 0.9  # High confidence due to appropriate uncertainty
+    
+    def get_safety_flags(self, response):
+        """Identify specific safety concerns in response"""
+        flags = []
+        
+        if "definitely" in response.lower() or "guaranteed" in response.lower():
+            flags.append("overconfident_medical_claims")
+        
+        if not any(phrase in response.lower() for phrase in ["consult", "healthcare provider", "doctor"]):
+            flags.append("missing_medical_disclaimer")
+        
+        if any(word in response.lower() for word in ["cure", "treatment", "medication"]):
+            flags.append("potential_medical_advice")
+        
+        return flags
+</code></pre>
+            </div>
         </div>
 
         <h4>Component 4: Bias Detection System</h4>
-        <div class="code-block">
-def detect_cultural_bias(response_text, user_cultural_context):
+        <div class="collapsible-code">
+            <div class="code-header" onclick="toggleCode('code4')">
+                <span>Cultural Bias Detection Functions</span>
+                <span class="code-toggle" id="toggle4">▶</span>
+            </div>
+            <div class="code-preview">
+                def detect_cultural_bias(response_text, user_cultural_context): ...<br>
+                def check_empowerment_language(text): ...<br>
+                def check_supportive_language(text): ...<br>
+                def calculate_bias_score(text, bias_indicators, cultural_scores): ...<br>
+                def get_bias_reduction_recommendations(text, bias_indicators): ...
+            </div>
+            <div class="code-content" id="code4">
+<pre><code class="language-python">def detect_cultural_bias(response_text, user_cultural_context):
     """
     Detect potential cultural bias in AI responses
+    Returns bias score and specific bias indicators found
     """
     bias_indicators = {
-        "western_centrism": ["should", "must", "always", "never"],
-        "medical_bias": ["abnormal", "disorder", "problem", "failure"],
-        "age_bias": ["old", "elderly", "declining", "deteriorating"]
+        "western_centrism": {
+            "keywords": ["should", "must", "always", "never", "normal", "standard"],
+            "weight": 0.8,
+            "description": "Imposing universal standards without cultural context"
+        },
+        "medical_bias": {
+            "keywords": ["abnormal", "disorder", "problem", "failure", "dysfunction", "deficiency"],
+            "weight": 0.9,
+            "description": "Pathologizing natural menopause experiences"
+        },
+        "age_bias": {
+            "keywords": ["old", "elderly", "declining", "deteriorating", "past_prime"],
+            "weight": 0.7,
+            "description": "Negative framing of aging and menopause"
+        },
+        "gender_bias": {
+            "keywords": ["emotional", "irrational", "moody", "hysterical"],
+            "weight": 0.9,
+            "description": "Stereotypical gender assumptions"
+        },
+        "socioeconomic_bias": {
+            "keywords": ["expensive", "luxury", "premium", "high_end"],
+            "weight": 0.6,
+            "description": "Assuming access to expensive treatments"
+        }
     }
     
     cultural_appropriateness = {
@@ -420,7 +733,351 @@ def detect_cultural_bias(response_text, user_cultural_context):
         "neutral_pathway": check_balanced_language(response_text)
     }
     
-    return calculate_bias_score(response_text, bias_indicators, cultural_appropriateness)
+    bias_score = calculate_bias_score(response_text, bias_indicators, cultural_appropriateness)
+    
+    return {
+        "overall_bias_score": bias_score,
+        "bias_indicators_found": get_bias_indicators_found(response_text, bias_indicators),
+        "cultural_appropriateness_score": cultural_appropriateness[user_cultural_context],
+        "recommendations": get_bias_reduction_recommendations(response_text, bias_indicators)
+    }
+
+def check_empowerment_language(text):
+    """Check for empowering, positive language appropriate for liberation pathway"""
+    empowerment_keywords = [
+        "empowerment", "wisdom", "freedom", "liberation", "celebration", 
+        "growth", "transformation", "strength", "resilience", "opportunity"
+    ]
+    
+    negative_keywords = [
+        "loss", "decline", "failure", "problem", "abnormal", "disorder"
+    ]
+    
+    empowerment_count = sum(1 for keyword in empowerment_keywords if keyword in text.lower())
+    negative_count = sum(1 for keyword in negative_keywords if keyword in text.lower())
+    
+    # Higher empowerment and lower negative = better score
+    total_keywords = empowerment_count + negative_count
+    if total_keywords == 0:
+        return 0.7  # Neutral
+    
+    return empowerment_count / total_keywords
+
+def check_supportive_language(text):
+    """Check for supportive, medically-informed language for medical pathway"""
+    supportive_keywords = [
+        "support", "management", "treatment", "care", "help", "relief", 
+        "effective", "evidence-based", "professional", "guidance"
+    ]
+    
+    dismissive_keywords = [
+        "just", "simply", "only", "minor", "insignificant", "imaginary"
+    ]
+    
+    supportive_count = sum(1 for keyword in supportive_keywords if keyword in text.lower())
+    dismissive_count = sum(1 for keyword in dismissive_keywords if keyword in text.lower())
+    
+    # Higher supportive and lower dismissive = better score
+    total_keywords = supportive_count + dismissive_count
+    if total_keywords == 0:
+        return 0.7  # Neutral
+    
+    return supportive_count / total_keywords
+
+def check_balanced_language(text):
+    """Check for balanced, informative language for neutral pathway"""
+    balanced_keywords = [
+        "varies", "individual", "different", "options", "consider", 
+        "depends", "may", "can", "sometimes", "often"
+    ]
+    
+    absolute_keywords = [
+        "always", "never", "all", "none", "everyone", "nobody", "definitely"
+    ]
+    
+    balanced_count = sum(1 for keyword in balanced_keywords if keyword in text.lower())
+    absolute_count = sum(1 for keyword in absolute_keywords if keyword in text.lower())
+    
+    # Higher balanced and lower absolute = better score
+    total_keywords = balanced_count + absolute_count
+    if total_keywords == 0:
+        return 0.7  # Neutral
+    
+    return balanced_count / total_keywords
+
+def calculate_bias_score(text, bias_indicators, cultural_scores):
+    """Calculate overall bias score combining multiple factors"""
+    bias_score = 0
+    total_weight = 0
+    
+    for bias_type, config in bias_indicators.items():
+        found_indicators = sum(1 for keyword in config["keywords"] if keyword in text.lower())
+        if found_indicators > 0:
+            bias_score += found_indicators * config["weight"]
+        total_weight += config["weight"]
+    
+    # Normalize bias score (lower is better)
+    normalized_bias = bias_score / total_weight if total_weight > 0 else 0
+    
+    # Factor in cultural appropriateness (higher is better)
+    avg_cultural_score = sum(cultural_scores.values()) / len(cultural_scores)
+    
+    # Final score: low bias + high cultural appropriateness = good score
+    final_score = (1 - normalized_bias) * 0.6 + avg_cultural_score * 0.4
+    
+    return final_score
+
+def get_bias_indicators_found(text, bias_indicators):
+    """Return specific bias indicators found in the text"""
+    found = {}
+    for bias_type, config in bias_indicators.items():
+        found_keywords = [keyword for keyword in config["keywords"] if keyword in text.lower()]
+        if found_keywords:
+            found[bias_type] = {
+                "keywords_found": found_keywords,
+                "description": config["description"]
+            }
+    return found
+
+def get_bias_reduction_recommendations(text, bias_indicators):
+    """Provide specific recommendations to reduce identified biases"""
+    recommendations = []
+    
+    # Check for each type of bias and provide specific recommendations
+    if any(keyword in text.lower() for keyword in bias_indicators["western_centrism"]["keywords"]):
+        recommendations.append("Consider adding cultural context and acknowledging diverse perspectives on menopause")
+    
+    if any(keyword in text.lower() for keyword in bias_indicators["medical_bias"]["keywords"]):
+        recommendations.append("Frame menopause as a natural transition rather than a medical problem")
+    
+    if any(keyword in text.lower() for keyword in bias_indicators["age_bias"]["keywords"]):
+        recommendations.append("Use positive or neutral language about aging and life transitions")
+    
+    if any(keyword in text.lower() for keyword in bias_indicators["gender_bias"]["keywords"]):
+        recommendations.append("Avoid stereotypical assumptions about women's emotional responses")
+    
+    if any(keyword in text.lower() for keyword in bias_indicators["socioeconomic_bias"]["keywords"]):
+        recommendations.append("Include accessible options and acknowledge economic constraints")
+    
+    return recommendations
+</code></pre>
+            </div>
+        </div>
+
+        <h4>Component 5: LLM Integration and Response Generation</h4>
+        <div class="collapsible-code">
+            <div class="code-header" onclick="toggleCode('code5')">
+                <span>Menopause LLM Engine (Complete Integration)</span>
+                <span class="code-toggle" id="toggle5">▶</span>
+            </div>
+            <div class="code-preview">
+                class MenopauseLLMEngine:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def generate_response(self, user_question, cultural_context, user_profile): ...<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def build_system_prompt(self, content_framework, user_profile): ...<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def call_llm(self, system_prompt, user_question): ...<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def enhance_response(self, response, content_framework): ...
+            </div>
+            <div class="code-content" id="code5">
+<pre><code class="language-python">class MenopauseLLMEngine:
+    """Main engine for generating culturally-sensitive menopause education responses"""
+    
+    def __init__(self, api_key=None, model="gpt-3.5-turbo"):
+        self.api_key = api_key
+        self.model = model
+        self.cultural_router = ContentRouter()
+        self.safety_validator = SafetyValidator()
+        self.response_cache = {}
+        
+    def generate_response(self, user_question, cultural_context, user_profile):
+        """Generate culturally-appropriate response to user question"""
+        
+        # Step 1: Route to appropriate cultural pathway
+        pathway = self.cultural_router.route_user(cultural_context)
+        content_framework = pathway.get_content_framework()
+        
+        # Step 2: Construct culturally-aware prompt
+        system_prompt = self.build_system_prompt(content_framework, user_profile)
+        
+        # Step 3: Generate initial response
+        raw_response = self.call_llm(system_prompt, user_question)
+        
+        # Step 4: Validate response safety and accuracy
+        validation_result = self.safety_validator.validate_response(
+            raw_response, cultural_context
+        )
+        
+        # Step 5: Handle validation results
+        if validation_result["approved"]:
+            final_response = self.enhance_response(raw_response, content_framework)
+        elif validation_result["requires_human_review"]:
+            final_response = self.get_fallback_response(user_question, cultural_context)
+        else:
+            final_response = self.regenerate_with_corrections(
+                user_question, system_prompt, validation_result["recommendations"]
+            )
+        
+        # Step 6: Add safety disclaimers and resources
+        final_response = self.add_safety_disclaimers(final_response)
+        
+        return {
+            "response": final_response,
+            "cultural_pathway": content_framework["focus"],
+            "safety_validation": validation_result,
+            "resources": self.get_relevant_resources(cultural_context)
+        }
+    
+    def build_system_prompt(self, content_framework, user_profile):
+        """Build culturally-appropriate system prompt"""
+        base_prompt = f"""
+You are a culturally-sensitive menopause education assistant. Your role is to provide 
+accurate, supportive information about menopause while respecting diverse cultural 
+perspectives and individual experiences.
+
+CULTURAL CONTEXT: {content_framework["focus"]}
+TONE: {content_framework["tone"]}
+KEY THEMES: {", ".join(content_framework["key_themes"])}
+
+SAFETY GUIDELINES:
+- Always acknowledge that experiences vary individually
+- Include disclaimers that this is educational, not medical advice
+- Encourage consultation with healthcare providers for medical concerns
+- Respect cultural perspectives without imposing universal standards
+- Avoid absolute statements about what is "normal" or "abnormal"
+- Be sensitive to economic and accessibility constraints
+
+USER PROFILE:
+- Age range: {user_profile.get("age_range", "Unknown")}
+- Cultural background: {user_profile.get("cultural_background", "Not specified")}
+- Information seeking stage: {user_profile.get("information_stage", "General inquiry")}
+
+RESPONSE REQUIREMENTS:
+- Length: 2-3 paragraphs maximum
+- Include relevant resources or next steps
+- Maintain hope and empowerment while being realistic
+- Use inclusive, respectful language
+"""
+        return base_prompt
+    
+    def call_llm(self, system_prompt, user_question):
+        """Make API call to LLM service with error handling"""
+        try:
+            # Simplified implementation - replace with actual API call
+            import openai
+            
+            response = openai.ChatCompletion.create(
+                model=self.model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_question}
+                ],
+                temperature=0.7,
+                max_tokens=500
+            )
+            
+            return response.choices[0].message.content
+            
+        except Exception as e:
+            return self.get_error_fallback_response(str(e))
+    
+    def enhance_response(self, response, content_framework):
+        """Enhance response with pathway-specific elements"""
+        enhancements = {
+            "empowerment_and_wisdom": self.add_empowerment_elements,
+            "symptom_management_and_treatment": self.add_medical_support_elements,
+            "balanced_information_and_choice": self.add_balanced_perspective_elements
+        }
+        
+        enhancement_func = enhancements.get(content_framework["focus"])
+        if enhancement_func:
+            response = enhancement_func(response)
+        
+        return response
+    
+    def add_empowerment_elements(self, response):
+        """Add empowering elements for liberation pathway"""
+        empowerment_additions = [
+            "\n\n💪 Remember: This transition often brings new freedoms and opportunities for growth.",
+            "\n\n🌟 Many women find this life stage to be one of increased confidence and self-knowledge.",
+            "\n\n🤝 Consider connecting with other women who view this transition positively."
+        ]
+        
+        import random
+        return response + random.choice(empowerment_additions)
+    
+    def add_medical_support_elements(self, response):
+        """Add supportive medical elements for medical pathway"""
+        medical_additions = [
+            "\n\n🏥 Healthcare providers can offer many effective treatment options.",
+            "\n\n📋 Consider keeping a symptom diary to discuss with your healthcare provider.",
+            "\n\n💊 Effective treatments are available - you don't have to suffer in silence."
+        ]
+        
+        import random
+        return response + random.choice(medical_additions)
+    
+    def add_balanced_perspective_elements(self, response):
+        """Add balanced elements for neutral pathway"""
+        balanced_additions = [
+            "\n\n⚖️ Remember that menopause experiences vary greatly among individuals.",
+            "\n\n🌍 Different cultures and individuals may view this transition differently.",
+            "\n\n📚 Take time to explore what approach feels right for your situation."
+        ]
+        
+        import random
+        return response + random.choice(balanced_additions)
+    
+    def add_safety_disclaimers(self, response):
+        """Add necessary safety disclaimers"""
+        disclaimer = "\n\n⚠️ This information is for educational purposes only and is not a substitute for professional medical advice. Please consult with a healthcare provider for personalized guidance."
+        
+        return response + disclaimer
+    
+    def get_fallback_response(self, question, cultural_context):
+        """Provide safe fallback response when AI validation fails"""
+        return f"""
+I understand you're seeking information about menopause. This is an important topic that deserves 
+careful, personalized attention. 
+
+While I aim to provide helpful educational information, your question touches on areas where 
+individual medical guidance would be most appropriate. I'd recommend discussing this with a 
+healthcare provider who can consider your specific situation and cultural context.
+
+In the meantime, reputable resources like the International Menopause Society or your local 
+women's health organizations can provide evidence-based information.
+
+⚠️ This response prioritizes your safety and acknowledges the importance of professional medical guidance.
+"""
+    
+    def get_relevant_resources(self, cultural_context):
+        """Get culturally-relevant resources"""
+        base_resources = [
+            "International Menopause Society: https://www.imsociety.org/",
+            "Local healthcare provider or gynecologist",
+            "Menopause support groups in your community"
+        ]
+        
+        cultural_resources = {
+            "liberation": [
+                "Women's wisdom circles and community groups",
+                "Books on positive aging and life transitions",
+                "Cultural celebrations of elder women"
+            ],
+            "medical": [
+                "Menopause clinics and specialists",
+                "Evidence-based treatment information",
+                "Medical society patient resources"
+            ],
+            "neutral": [
+                "Comprehensive menopause educational websites",
+                "Balanced health information sources",
+                "Multicultural health resources"
+            ]
+        }
+        
+        pathway_resources = cultural_resources.get(cultural_context, [])
+        return base_resources + pathway_resources
+</code></pre>
+            </div>
         </div>
 
         <h3>Technical Implementation Tasks</h3>
@@ -728,8 +1385,30 @@ def detect_cultural_bias(response_text, user_cultural_context):
     </div>
 
     <script>
-        // Initialize Mermaid
-        mermaid.initialize({ startOnLoad: true });
+        // Initialize Mermaid for version 11.9.0
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                curve: 'linear'
+            }
+        });
+        
+        // Function to toggle collapsible code blocks
+        function toggleCode(codeId) {
+            const codeContent = document.getElementById(codeId);
+            const toggleIcon = document.getElementById('toggle' + codeId.slice(-1));
+            
+            if (codeContent.classList.contains('expanded')) {
+                codeContent.classList.remove('expanded');
+                toggleIcon.classList.remove('expanded');
+                toggleIcon.textContent = '▶';
+            } else {
+                codeContent.classList.add('expanded');
+                toggleIcon.classList.add('expanded');
+                toggleIcon.textContent = '▼';
+            }
+        }
         
         // Add interactive elements
         document.addEventListener('DOMContentLoaded', function() {
