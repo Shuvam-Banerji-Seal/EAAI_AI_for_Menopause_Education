@@ -21,6 +21,54 @@
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
+        
+        .main-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .main-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            color: white;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .main-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 0;
+        }
+        
         h1 {
             color: #2c3e50;
             border-bottom: 3px solid #3498db;
@@ -60,15 +108,23 @@
             background-color: #e8f4f8;
         }
         .phase {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: white;
+            color: #2c3e50;
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
+            border: 2px solid #3498db;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .phase h3 {
-            color: white;
+            color: #2c3e50;
             margin-top: 0;
+        }
+        .phase h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
         }
         .timeline {
             background: #f1f2f6;
@@ -198,47 +254,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>Breaking the Silence: AI-Powered Menopause Education System</h1>
+        <div class="main-header">
+            <h1>System Design Guide</h1>
+            <p><em>How to start with Menopause LLM !</em></p>
+        </div>
         
-        <h2>Assignment Overview</h2>
-        <table>
-            <tr>
-                <th>Aspect</th>
-                <th>Details</th>
-            </tr>
-            <tr>
-                <td><strong>Summary</strong></td>
-                <td>Students design and develop a culturally-sensitive AI system for menopause education, addressing global health education gaps through personalized Large Language Model applications. The assignment combines health informatics, cultural sensitivity, AI ethics, and technical implementation.</td>
-            </tr>
-            <tr>
-                <td><strong>Topics</strong></td>
-                <td>Large Language Models, AI Ethics, Cultural AI, Health Informatics, Bias Detection, Human-Computer Interaction, Natural Language Processing, AI Safety</td>
-            </tr>
-            <tr>
-                <td><strong>Audience</strong></td>
-                <td>High School Students (Grades 9-12) and CS1 College Students</td>
-            </tr>
-            <tr>
-                <td><strong>Difficulty</strong></td>
-                <td>Moderate to Advanced. Phase 1: 2-3 weeks (research/design). Phase 2: 3-4 weeks (technical implementation). Total: 5-7 weeks</td>
-            </tr>
-            <tr>
-                <td><strong>Strengths</strong></td>
-                <td>• Addresses real-world health equity issues<br>• Combines technical skills with social impact<br>• Teaches AI ethics through practical application<br>• Culturally inclusive and globally relevant<br>• Integrates multiple AI concepts (LLMs, bias, safety)</td>
-            </tr>
-            <tr>
-                <td><strong>Weaknesses</strong></td>
-                <td>• Requires sensitive handling of health topics<br>• May be challenging for students without health background<br>• Cultural research requires substantial time investment<br>• Technical implementation requires programming experience</td>
-            </tr>
-            <tr>
-                <td><strong>Dependencies</strong></td>
-                <td><strong>High School:</strong> Basic understanding of AI concepts, internet research skills, presentation abilities<br><strong>CS1:</strong> Python programming fundamentals, basic web technologies (HTML/CSS), introduction to APIs, data structures</td>
-            </tr>
-            <tr>
-                <td><strong>Variants</strong></td>
-                <td><strong>Simplified:</strong> Focus only on Phase 1 research and design<br><strong>Advanced:</strong> Implement machine learning models for bias detection<br><strong>Cross-curricular:</strong> Partner with health/biology classes<br><strong>Global:</strong> Compare multiple cultural contexts beyond India</td>
-            </tr>
-        </table>
 
         <div class="highlight">
             <h3>🎯 Learning Objectives</h3>
@@ -1226,9 +1246,9 @@ women's health organizations can provide evidence-based information.
             </ul>
         </div>
 
-        <h2>Resources</h2>
+        <!-- <h2>Resources</h2> -->
 
-        <div class="resources-section">
+        <!-- <div class="resources-section">
             <h3>📚 Research Resources</h3>
             <a href="https://www.who.int/news-room/fact-sheets/detail/menopause" class="resource-link" target="_blank">WHO Menopause Fact Sheet</a>
             <a href="https://www.ucl.ac.uk/menopause-research" class="resource-link" target="_blank">UCL Menopause Research</a>
@@ -1251,7 +1271,7 @@ women's health organizations can provide evidence-based information.
             <a href="https://www.cdc.gov/culturalcompetency/" class="resource-link" target="_blank">CDC Cultural Competency</a>
             <a href="https://minorityhealth.hhs.gov/" class="resource-link" target="_blank">Office of Minority Health</a>
             <a href="https://www.who.int/social_determinants/en/" class="resource-link" target="_blank">WHO Social Determinants of Health</a>
-        </div>
+        </div> -->
 
         <div class="rubric">
             <h2>📊 Grading Rubric</h2>
@@ -1311,7 +1331,7 @@ women's health organizations can provide evidence-based information.
             </table>
         </div>
 
-        <div class="success">
+        <!-- <div class="success">
             <h3>🎯 Success Indicators</h3>
             <p>Students will demonstrate success through:</p>
             <ul>
@@ -1331,7 +1351,7 @@ women's health organizations can provide evidence-based information.
             <li><a href="user_persona_template.docx" class="resource-link">👥 User Persona Template</a></li>
             <li><a href="research_citation_guide.pdf" class="resource-link">📚 Research and Citation Guide</a></li>
             <li><a href="presentation_template.pptx" class="resource-link">🎤 Presentation Template</a></li>
-        </ul>
+        </ul> -->
 
         <h2>👨‍🏫 Instructor Notes</h2>
         
@@ -1377,9 +1397,9 @@ women's health organizations can provide evidence-based information.
         </div>
 
         <footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; color: #666;">
-            <p><strong>Breaking the Silence: AI-Powered Menopause Education System</strong><br>
+            <p><strong>Breaking the Silence: LLMs for Menopause Education in Culturally Diverse Contexts</strong><br>
             Model AI Assignment for EAAI 2026<br>
-            <em>Empowering the next generation of AI practitioners to build culturally-sensitive, ethically-sound health technology</em></p>
+            <!-- <em>Empowering the next generation of AI practitioners to build culturally-sensitive, ethically-sound health technology</em></p> -->
         </footer>
 
     </div>

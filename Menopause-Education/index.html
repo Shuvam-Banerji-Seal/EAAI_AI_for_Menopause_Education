@@ -1,55 +1,399 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Menopause Education AI Assignment</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking the Silence: LLMs for Menopause Education in Culturally Diverse Contexts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+            color: #2d3748;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .main-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .main-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            line-height: 1.3;
+        }
+        
+        .authors-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .authors-section p {
+            margin-bottom: 8px;
+        }
+        
+        .authors-names {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        
+        .affiliation {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-bottom: 5px;
+        }
+        
+        .assignment-overview {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+        }
+        
+        .assignment-overview h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .info-table th,
+        .info-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .info-table th {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            color: #4c51bf;
+            font-weight: 600;
+            width: 150px;
+            vertical-align: top;
+        }
+        
+        .info-table td {
+            color: #2d3748;
+            vertical-align: top;
+        }
+        
+        .info-table tr:last-child th,
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .info-table tr:hover {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+        }
+        
+        .materials-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 5px solid #667eea;
+        }
+        
+        .materials-section h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .material-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            border: 2px solid #e3e8ff;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .material-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .material-card:hover::before {
+            left: 100%;
+        }
+        
+        .material-card:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .material-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .material-card h3 {
+            color: #4c51bf;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .material-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .highlight-strength {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border-left: 4px solid #48bb78;
+        }
+        
+        .highlight-challenge {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+            border-left: 4px solid #f56565;
+        }
+        
+        .highlight-neutral {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            border-left: 4px solid #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .main-header {
+                padding: 30px 20px;
+            }
+            
+            .main-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .assignment-overview,
+            .materials-section {
+                padding: 20px;
+            }
+            
+            .info-table th,
+            .info-table td {
+                padding: 12px 15px;
+            }
+            
+            .info-table th {
+                width: 120px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .authors-names {
+                font-size: 1rem;
+            }
+            
+            .affiliation {
+                font-size: 0.85rem;
+            }
+            
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="main-header">
+            <h1>Breaking the Silence: LLMs for Menopause Education in Culturally Diverse Contexts</h1>
+            
+            <div class="authors-section">
+                <p class="authors-names">
+                    Aheli Poddar<sup>1</sup>, Shuvam Banerji Seal<sup>2</sup>
+                </p>
+                <p class="affiliation">
+                    <sup>1</sup> Institute of Engineering & Management, Kolkata, India
+                </p>
+                <p class="affiliation">
+                    <sup>2</sup> Indian Institute of Science Education and Research, Kolkata, India
+                </p>
+            </div>
+        </div>
+        
+        <div class="assignment-overview">
+            <h2>Assignment Overview</h2>
+            
+            <table class="info-table">
+                <tr class="highlight-neutral">
+                    <th>Summary</th>
+                    <td>This assignment involves creating an AI-powered educational tool for menopause. It includes developing a cultural assessment question bank, a safety validation notebook, and user personas to guide the AI's development.</td>
+                </tr>
+                <tr class="highlight-neutral">
+                    <th>Topics</th>
+                    <td>Applied AI, AI Ethics, Human-Computer Interaction, Natural Language Processing</td>
+                </tr>
+                <tr class="highlight-neutral">
+                    <th>Audience</th>
+                    <td>Advanced AI, Undergraduate Research</td>
+                </tr>
+                <tr class="highlight-challenge">
+                    <th>Difficulty</th>
+                    <td>Medium to Hard. Requires understanding of AI concepts, ethics and some programming. Estimated 20-30 hours.</td>
+                </tr>
+                <tr class="highlight-strength">
+                    <th>Strengths</th>
+                    <td>Addresses a real-world problem with significant social impact. Encourages students to think about AI ethics and human-centered design. Provides a framework for developing AI for a sensitive topic.</td>
+                </tr>
+                <tr class="highlight-challenge">
+                    <th>Challenges</th>
+                    <td>Requires a multidisciplinary approach that may be challenging for students with a purely technical background. The topic of menopause may be unfamiliar to some students.</td>
+                </tr>
+                <tr class="highlight-neutral">
+                    <th>Dependencies</th>
+                    <td>Basic knowledge of Python and Jupyter Notebooks. Familiarity with AI concepts and machine learning. Access to a computer with a web browser and a Python environment.</td>
+                </tr>
+                <tr class="highlight-neutral">
+                    <th>Extensions</th>
+                    <td>The assignment can be extended to include the development of a functional chatbot or a more comprehensive educational platform. Students could also be tasked with collecting and analyzing data from the cultural assessment question bank. The user personas can be expanded to include more diverse backgrounds.</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="materials-section">
+            <h2>Assignment Materials</h2>
+            <div class="materials-grid">
+                <a href="menopause.html" class="material-card">
+                    <span class="icon">🧠</span>
+                    <h3>System Design Guide</h3>
+                    <p>Introductory System Design on how to create Menopause LLM with comprehensive technical implementation details</p>
+                </a>
+                
+                <a href="cultural_assessment_question_bank.html" class="material-card">
+                    <span class="icon">❓</span>
+                    <h3>Cultural Assessment Question Bank</h3>
+                    <p>Comprehensive question bank for determining appropriate cultural pathways in menopause education</p>
+                </a>
 
-<h1>Menopause Education AI Assignment</h1>
+                <a href="#" class="material-card" onclick="downloadMultiple(); return false;">
+                    <span class="icon">📑</span>
+                    <h3>Introductory Model Notebooks</h3>
+                    <p>Download both simplified and advanced technical implementation notebooks</p>
+                </a>
 
-<table border="1">
-  <tr>
-    <td><b>Summary</b></td>
-    <td>This assignment involves creating an AI-powered educational tool for menopause. It includes developing a cultural assessment question bank, a safety validation notebook, and user personas to guide the AI's development.</td>
-  </tr>
-  <tr>
-    <td><b>Topics</b></td>
-    <td>Applied AI, AI Ethics, Human-Computer Interaction, Natural Language Processing</td>
-  </tr>
-  <tr>
-    <td><b>Audience</b></td>
-    <td>Advanced AI, Undergraduate Research</td>
-  </tr>
-  <tr>
-    <td><b>Difficulty</b></td>
-    <td>Medium to Hard. Requires understanding of AI concepts, ethics, and some programming. Estimated 20-30 hours.</td>
-  </tr>
-  <tr>
-    <td><b>Strengths</b></td>
-    <td>Addresses a real-world problem with significant social impact. Encourages students to think about AI ethics and human-centered design. Provides a framework for developing AI for a sensitive topic.</td>
-  </tr>
-  <tr>
-    <td><b>Weaknesses</b></td>
-    <td>Requires a multidisciplinary approach that may be challenging for students with a purely technical background. The topic of menopause may be unfamiliar to some students.</td>
-  </tr>
-  <tr>
-    <td><b>Dependencies</b></td>
-    <td>Basic knowledge of Python and Jupyter Notebooks. Familiarity with AI concepts and machine learning. Access to a computer with a web browser and a Python environment.</td>
-  </tr>
-  <tr>
-    <td><b>Variants</b></td>
-    <td>The assignment can be extended to include the development of a functional chatbot or a more comprehensive educational platform. Students could also be tasked with collecting and analyzing data from the cultural assessment question bank. The user personas can be expanded to include more diverse backgrounds.</td>
-  </tr>
-</table>
+                <script>
+                function downloadMultiple() {
+                    const files = [
+                        'simplified_technical_implementation.ipynb',
+                        'technical_implementation.ipynb'
+                    ];
+                    files.forEach(file => {
+                        const link = document.createElement('a');
+                        link.href = file;
+                        link.download = file;
+                        link.click();
+                    });
+                }
+                </script>
 
-<h2>Assignment Materials</h2>
-<ul>
-  <li><a href="menopause.html">Menopause Information</a></li>
-  <li><a href="cultural_assessment_question_bank.html">Cultural Assessment Question Bank</a></li>
-  <li><a href="safety_validation_code.ipynb">Safety Validation Notebook</a></li>
-  <li><a href="user_persona_template.md">User Persona Template</a></li>
-</ul>
+                <!-- <a href="safety_validation_code.ipynb" class="material-card">
+                    <span class="icon">💾</span>
+                    <h3>Safety Validation Notebook</h3>
+                    <p>Interactive Jupyter notebook containing code and framework for AI safety validation and testing</p>
+                </a> -->
 
+                <a href="Education_about_menopause_phases_through_AI.pdf" class="material-card">
+                    <span class="icon">📋</span>
+                    <h3>Presentation Template</h3>
+                    <p>Professional presentation template for showcasing your menopause education AI project</p>
+                </a>
+                
+                <a href="user_persona_template_simple.pdf" class="material-card">
+                    <span class="icon">👤</span>
+                    <h3>User Persona Template</h3>
+                    <p>Comprehensive template for creating diverse user personas to guide AI system development and testing</p>
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,11 +1,15 @@
 
-# Breaking the Silence: AI-Powered Menopause Education System
+# Breaking the Silence: LLMs for Menopause Education in Culturally Diverse Contexts
 
 **EAAI 2026 Model AI Assignment Submission**
 
+**Authors:** Aheli Poddar¹, Shuvam Banerji Seal²  
+¹ Institute of Engineering & Management, Kolkata, India  
+² Indian Institute of Science Education and Research, Kolkata, India
+
 [![EAAI 2026](https://img.shields.io/badge/EAAI-2026-blue.svg)](https://www.aaai.org/Conferences/AAAI/aaai26.php)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 
 ## 🎯 Assignment Overview
 
@@ -23,23 +27,21 @@
 ## 📋 Assignment Materials
 
 ### 🎯 Core Assignment Files
-- **[`index.html`](Menopause-Education/index.html)** - Assignment navigation and overview
-- **[`menopause.html`](Menopause-Education/menopause.html)** - Complete assignment specification with collapsible code examples
-- **[`cultural_assessment_question_bank.html`](Menopause-Education/cultural_assessment_question_bank.html)** - Cultural assessment tools and question templates
+- **[`index.html`](Menopause-Education/index.html)** - Main assignment portal with comprehensive overview and navigation
+- **[`menopause.html`](Menopause-Education/menopause.html)** - Complete system design guide with technical implementation details
+- **[`cultural_assessment_question_bank.html`](Menopause-Education/cultural_assessment_question_bank.html)** - Comprehensive cultural assessment framework with 12 question categories
 
-### 💻 Technical Implementation
-- **[`technical_implementation.ipynb`](Menopause-Education/technical_implementation.ipynb)** - Full technical implementation with complete code
-- **[`simplified_technical_implementation.ipynb`](Menopause-Education/simplified_technical_implementation.ipynb)** - Beginner-friendly version for intro students
-- **[`technical_implementation2.ipynb`](Menopause-Education/technical_implementation2.ipynb)** - Advanced features and extensions
-- **[`technical_implementation3.ipynb`](Menopause-Education/technical_implementation3.ipynb)** - Latest implementation with additional components
-- **[`safety_validation_code.ipynb`](Menopause-Education/safety_validation_code.ipynb)** - Specialized safety validation techniques
+### 💻 Technical Implementation Notebooks
+- **[`simplified_technical_implementation.ipynb`](Menopause-Education/simplified_technical_implementation.ipynb)** - Beginner-friendly implementation for introductory students
+- **[`technical_implementation2.ipynb`](Menopause-Education/technical_implementation2.ipynb)** - Advanced implementation with enhanced features and safety mechanisms
 
-### 📝 Student Resources
-- **[`user_persona_template.md`](Menopause-Education/user_persona_template.md)** - Template for creating user personas and conducting user research
+### 📝 Student Resources & Templates
+- **[`user_persona_template_simple.md`](Menopause-Education/user_persona_template_simple.md)** - Simplified markdown template for user persona creation
+- **[`user_persona_template_simple.pdf`](Menopause-Education/user_persona_template_simple.pdf)** - PDF version of persona template for easy printing and completion
 
-### 🎤 Presentation Materials
-- **[`presentation.tex`](Menopause-Education/presentation.tex)** - LaTeX presentation template for student presentations
-- **[`presentation_sample.pdf`](Menopause-Education/presentation_sample.pdf)** - Sample presentation showing expected format and content
+### 🎤 Presentation & Documentation
+- **[`presentation.tex`](Menopause-Education/presentation.tex)** - LaTeX presentation template for student project presentations
+- **[`Education_about_menopause_phases_through_AI.pdf`](Menopause-Education/Education_about_menopause_phases_through_AI.pdf)** - Professional presentation template and sample materials
 
 
 
@@ -113,21 +115,37 @@ Students learn to apply AI technology ethically and responsibly:
 
 ## 🛠️ Technical Architecture
 
+### Enhanced Cultural Assessment System
+The system now features a comprehensive 12-category cultural assessment framework:
+
+1. **Life Transition Perspectives** - Understanding user's view on major life changes
+2. **Menstruation and Reproductive Health Views** - Attitudes toward reproductive experiences
+3. **Social and Family Context** - Community and family cultural dynamics
+4. **Religious and Spiritual Beliefs** - Impact of spiritual beliefs on health views
+5. **Health and Wellness Approach** - Preferred health management strategies
+6. **Socioeconomic and Educational Context** - Educational and economic background factors
+7. **Communication Preferences** - Language and information processing preferences
+8. **Menopause Journey and Current Experience** - Personal menopause status and goals
+9. **Healthcare and Support Systems** - Healthcare access and support preferences
+10. **Learning Preferences and Information Processing** - Educational content preferences
+11. **Technology and Digital Engagement** - Digital literacy and privacy concerns
+12. **Work and Social Life Impact** - Professional and social considerations
+
 ### Dual-Pathway System
 ```
 User Input → Cultural Assessment → Pathway Routing → Content Generation → Safety Validation → Response Delivery
 ```
 
 **Cultural Pathways:**
-- **Liberation Pathway**: For users viewing menopause as a positive life transition
-- **Medical Pathway**: For users experiencing menopause as a medical challenge  
+- **Liberation Pathway**: For users viewing menopause as empowerment and natural transition
+- **Loss/Medical Pathway**: For users experiencing menopause as medical challenge requiring symptom management
 - **Neutral Pathway**: Balanced approach for users without strong cultural framing
 
-### Safety Mechanisms
-- **Human-in-the-Loop**: Expert review for medical content
-- **Confidence Thresholds**: Automatic escalation when AI confidence is low
-- **Bias Detection**: Real-time analysis for cultural appropriateness
-- **Source Attribution**: All medical claims are linked to peer-reviewed sources
+### Integrated Safety Mechanisms
+- **Multi-tier Cultural Assessment**: 12-category framework for accurate pathway determination
+- **Persona-Driven Design**: Comprehensive user persona template for diverse user types
+- **Progressive Technical Implementation**: Beginner to advanced notebook progression
+- **Cultural Sensitivity Validation**: Built-in bias detection and cultural appropriateness checks
 
 ## 🎯 Assessment and Deliverables
 
@@ -139,20 +157,23 @@ User Input → Cultural Assessment → Pathway Routing → Content Generation �
 - 📋 **Implementation Plan**: Detailed roadmap for technical development
 
 ### Phase 2 Deliverables (60% of grade)
-- 💻 **Working Prototype**: Functional system with all safety components
-- 📓 **Technical Documentation**: Complete Jupyter notebooks with explanations
-- 🌐 **User Interface**: Accessible web interface with cultural routing
-- 🛡️ **Safety Validation**: Implemented bias detection and medical validation
-- 🎥 **Final Presentation**: 10-minute demo using provided templates
+- 💻 **Working Prototype**: Functional system using provided notebook implementations
+- 📓 **Technical Documentation**: Completed Jupyter notebooks with explanations and modifications
+- 🌐 **Cultural Assessment**: Implemented 12-category cultural routing system
+- 👥 **User Persona Portfolio**: Comprehensive user personas using provided templates
+- 🛡️ **Safety Implementation**: Cultural sensitivity validation and bias detection mechanisms
+- 🎥 **Final Presentation**: 10-minute demo using provided LaTeX and PDF templates
 
 ## 🌟 Instructor Resources
 
 ### Getting Started
-1. **Review Research Foundation**: Examine `main_paper/main.tex` for comprehensive background
-2. **Explore Assignment Materials**: Start with `Menopause-Education/index.html`
-3. **Test Technical Components**: Run through Jupyter notebooks to understand implementation
-4. **Adapt Cultural Context**: Modify focus for local cultural contexts while maintaining core principles
-5. **Prepare API Access**: Coordinate LLM API access for students (OpenAI, Anthropic, or local models)
+1. **Start with Assignment Portal**: Begin at `Menopause-Education/index.html` for complete overview
+2. **Review System Design**: Explore `Menopause-Education/menopause.html` for technical architecture
+3. **Understand Cultural Framework**: Study `cultural_assessment_question_bank.html` for assessment methodology
+4. **Practice with Notebooks**: Begin with `simplified_technical_implementation.ipynb` for basic concepts
+5. **Advance Implementation**: Progress to `technical_implementation2.ipynb` for enhanced features
+6. **Create User Personas**: Use `user_persona_template_simple.pdf` for user research
+7. **Prepare Presentations**: Utilize provided LaTeX and PDF templates for project showcase
 
 ### Classroom Integration
 - **Guest Speakers**: Invite healthcare professionals, AI ethicists, or cultural competency experts
@@ -218,7 +239,7 @@ This assignment represents a new paradigm in AI education - one that combines te
 - **Bridge Disciplines**: Connect computer science with health, sociology, and ethics
 - **Prepare Future Leaders**: Develop AI practitioners who prioritise equity and inclusion
 
-**Ready to transform AI education while addressing global health equity? Start with `Menopause-Education/index.html` and join the movement to break the silence around menopause through responsible AI innovation.**
+**Ready to transform AI education while addressing global health equity? Start with `Menopause-Education/index.html` and explore the comprehensive cultural assessment framework to join the movement breaking the silence around menopause through responsible AI innovation.**
 
 ---
 
