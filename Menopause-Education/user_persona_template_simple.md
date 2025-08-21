@@ -1,10 +1,4 @@
-<!-- # User Persona Template for Menopause Education AI System
 
-**Authors:** Aheli Poddar¹, Shuvam Banerji Seal²  
-¹ Institute of Engineering & Management, Kolkata, India  
-² Indian Institute of Science Education and Research, Kolkata, India
-
---- -->
 
 ## Persona Overview
 
