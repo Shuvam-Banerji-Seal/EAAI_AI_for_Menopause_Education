@@ -2,10 +2,10 @@
 # Breaking the Silence: LLMs for Menopause Education in Culturally Diverse Contexts
 
 **EAAI 2026 Model AI Assignment Submission**
-
+<!-- 
 **Authors:** Aheli Poddar¹, Shuvam Banerji Seal²  
 ¹ Institute of Engineering & Management, Kolkata, India  
-² Indian Institute of Science Education and Research, Kolkata, India
+² Indian Institute of Science Education and Research, Kolkata, India -->
 
 [![EAAI 2026](https://img.shields.io/badge/EAAI-2026-blue.svg)](https://www.aaai.org/Conferences/AAAI/aaai26.php)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -219,7 +219,7 @@ While focused on India, the framework adapts to:
 ## 📜 License and Citation
 
 This work is licensed under the MIT License. When using or adapting this assignment, please cite:
-
+<!-- 
 ```bibtex
 @article{menopause_ai_education_2026,
   title={Breaking the Silence: Large Language Models for Menopause Education in Culturally Diverse Contexts},
@@ -228,7 +228,7 @@ This work is licensed under the MIT License. When using or adapting this assignm
   year={2026},
   note={Available at: https://github.com/Shuvam-Banerji-Seal/EAAI_AI_for_Menopause_Education}
 }
-```
+``` -->
 
 ## 🎯 Call to Action
 
